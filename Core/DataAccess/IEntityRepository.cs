@@ -26,9 +26,13 @@ namespace Core.DataAccess
         */
       
         void Add(T entity);
+
         void Update(T entity);
+
         void Delete(T entity);
+
         T Get(Expression<Func<T, bool>> expression);
+
         List<T> GetAll(Expression<Func<T, bool>> filter = null);
         // Liste dönerken bir filtre uygulanacak ise buraya ayrıca parametre geçiliyor, parametre geçilmes ise tüm listeyi filtre uygulamadan geri dönüyor olacak.
     }
