@@ -7,9 +7,12 @@ using Entities.Dtos;
 
 namespace DataAccess.Abstract
 {
+    // ICustomerDal bir IEntityRepository'dir ve aynı zamanda çalışma tipi de Customer.
+    // ICustomerDal'ı Customer için yapılandırmış oluyoruz.
     public interface ICustomerDal : IEntityRepository<Customer>
     {
-        // ürüne ait özel operasyonları buraya ekliyoruz
+        // Ürüne ait özel operasyonları buraya ekliyoruz. 
+        // Customer'a ait özel bir operasyon eklemiş olduk.
         List<CustomerDetailsDto> GetCustomerDetails();
     }
 }

@@ -1,22 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Entities.Concrete;
+﻿using Entities.Concrete;
 using Core.DataAccess;
-using Entities.Dtos;
-
 
 namespace DataAccess.Abstract
 {
-    public interface IProductDal 
+    // IProductDal bir IEntityRepository'dir ve aynı zamanda çalışma tipi de Product.
+    // IProductDal'ı Product için yapılandırmış oluyoruz.
+    public interface IProductDal : IEntityRepository<Product>
     {
-        void Add(Product entity);
-        void Update(Product entity);
-        void Delete(Product entity);
-
-        Customer Get(Expression<Func<Product, bool>> expression);
-
-        List<Customer> GetAll(Expression<Func<Product, bool>> filter = null);
+        // Ürüne ait özel operasyonları buraya ekliyoruz. 
+        // Product'a ait özel bir operasyon eklemiş olduk.
     }
 }

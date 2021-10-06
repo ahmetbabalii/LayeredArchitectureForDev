@@ -6,17 +6,14 @@ using Core.Entities;
 namespace Core.DataAccess
 {
     /*
-        - Burada bir  Generic Repository Pattern deseni kullanıyoruz.
-    
-        - Gelen tipde değişiklik olacağından <T> olarak belirttik. Burada <T>, veritabanı üzerinde çalışacağı tipi belirtiyor.
-
-        - Veritabanı ile ilgili genel operasyonları gerçekleştireceğimiz interface.
-                
-        - <T> için bir kısıtlama da tamnımlamamız gerekiyor bu noktada Generic Constraint tanımlamamız gerekiyor
-        class: bu referans tip sadece olabilir
-        T bir referans tip olmalı ve T aynı zamanda IEntity'den implemente edilmiş bir nesne olmalı veya direkt olarak IEntity olmalıdır
-        new() : new'lenebilir bir nesne olmalı yani burada IEntity gibi interface'leri buraya gönderemiyor oluyoruz.               
-     */
+       - Burada bir  Generic Repository Pattern deseni kullanıyoruz.    
+       - Gelen tipde değişiklik olacağından <T> olarak belirttik. Burada <T>, veritabanı üzerinde çalışacağı tipi belirtiyor.
+       - Veritabanı ile ilgili genel operasyonları gerçekleştireceğimiz interface.                
+       - <T> için bir kısıtlama da tamnımlamamız gerekiyor bu noktada Generic Constraint tanımlamamız gerekiyor
+       - class: bu referans tip sadece olabilir        
+       - T bir referans tip olmalı ve T aynı zamanda IEntity'den implemente edilmiş bir nesne olmalı veya direkt olarak IEntity olmalıdır
+       - new() : new'lenebilir bir nesne olmalı yani burada IEntity gibi interface'leri buraya gönderemiyor oluyoruz.               
+    */
 
     public interface IEntityRepository<T> where T : class, IEntity
     {
