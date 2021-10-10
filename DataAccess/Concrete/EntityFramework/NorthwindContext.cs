@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities.Concrete;
+﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    // Context : Db tabloları ile proje class'larını bağlıyoruz.
+    // Context : Db tabloları ile proje içerisinde ki Entity Classlarını ilişkilendiriyor.
     public class NorthwindContext : DbContext 
     {
+        // DbContext : EntityFramework ile beraber gelen context nesnesidir. Biz burada değişiklik yapmak istediğimiz kısımları override ederek kullanıyoruz.
         // Proje çalışır çalışmaz direkt olarak buraya gelerek ilgili db bilgisini alıyor.
-        // Bu method bizim projemizin hangi veritabanı ile ilişki kurduğunu belirtiyor oluyoruz.
+
+        // OnConfiguring : Bu methodla birlikte bizim projemizin hangi veritabanı ile ilişkili olduğunu belirtiyoruz.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Burada connection string yazarken büyük küçük harf duyarlılığı bulunmuyor (SQL case insensitive'dir)
@@ -20,5 +17,8 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
