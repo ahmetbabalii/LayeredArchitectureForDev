@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Core.DataAccess.EntityFramework
 {
     /// <summary>
-    /// Repository Patternin implementasyonudur. CRUD operasyonlar için gerekli tüm toolkit burada implemente edilmiştir.
+    /// Repository Pattern'in implementasyonudur. CRUD operasyonlar için gerekli tüm toolkit burada implemente edilmiştir.
     /// ayrıca lifetimescope autofac tarafından yönetildiğinden metodların içinde bulunan usingler kaldırılmıştır.
     /// </summary>
     /// <typeparam name="TEntity">Tablo</typeparam>
@@ -19,16 +19,15 @@ namespace Core.DataAccess.EntityFramework
     {
         public void Add(TEntity entity)
         {
-            // altta kullanılan using sayesinde newledikten sonra işi bitti ise garbage collecter siler hemen using bitince
-            // bellek tasarufu için önemli bbir yapı c# ta 
-            // IDisposable pattern implementation  of c#
+            // Aşağıda kullanılan using sayesinde örneklenen nesnenin işi bitti ise garbage collecter bellekten o nesneyi atar.
+            // C#'da bellek tasarufu için önemli bir yapıdır. (garbage collecter) 
+            // Using C#'ın IDisposable pattern implementation'ıdır.
 
             using (TContext context = new TContext())
             {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-                context.SaveChanges();
-
+                var addedEntity = context.Entry(entity);  // Veri kaynağı ile ilişkilendir.
+                addedEntity.State = EntityState.Added; // Ekleme operasyonu olduğunu belirttik.
+                context.SaveChanges(); // Veritabanında işlemi tamamlar.
             }
         }
 
@@ -39,7 +38,6 @@ namespace Core.DataAccess.EntityFramework
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
-
             }
         }
 
@@ -48,6 +46,7 @@ namespace Core.DataAccess.EntityFramework
             // LINQ => Language Integrated Query
             using (TContext context = new TContext())
             {
+                // Gönderilen filtre ile ilgili ilk kaydın yer aldığı sonucu geriye dönecek.
                 return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
@@ -56,8 +55,8 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
+                // Filtrenin uygulandığı kısımdır. Eğer filtre ile ilgili parametre gönderilmez ise tüm kayıtları geriye döndürecektir.
                 return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
-
             }
         }
 
@@ -68,7 +67,6 @@ namespace Core.DataAccess.EntityFramework
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
-
             }
         }
     }

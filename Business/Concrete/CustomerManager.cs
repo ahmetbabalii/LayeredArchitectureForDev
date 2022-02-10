@@ -41,7 +41,6 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(null));
         }
 
-
         public IDataResult<List<CustomerDetailsDto>> GetAllDetails()
         {
             return new SuccessDataResult<List<CustomerDetailsDto>>(_customerDal.GetCustomerDetails(), Messages.Listed);

@@ -13,9 +13,12 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Burada connection string yazarken büyük küçük harf duyarlılığı bulunmuyor (SQL case insensitive'dir)
+            // Bağlantı bilgilerini View altında yer alan SQL Server Object Explorer üzerinden yeni bağlantı ekleyerek ulaşabilirsiniz.
             optionsBuilder.UseSqlServer(@"Data Source=AHMETBAB\SQLEXPRESS;Initial Catalog=NorthwindNetCore;Integrated Security=True");
         }
 
+        // DbSet ile birlikte veritabanında ki tablolar ile classları(entity'leri) eşleştirmiş oluyoruz.
+        // örnek => public DbSet<EntityAdi> VeritabanındaKullanilanTabloAdi { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
