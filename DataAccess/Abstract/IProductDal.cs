@@ -1,5 +1,7 @@
-﻿using Entities.Concrete;
+﻿using System.Collections.Generic;
+using Entities.Concrete;
 using Core.DataAccess;
+using Entities.Dtos;
 
 namespace DataAccess.Abstract
 {
@@ -9,5 +11,6 @@ namespace DataAccess.Abstract
     {
         // Ürüne ait özel operasyonları buraya ekliyoruz. 
         // Product'a ait özel bir operasyon eklemiş olduk.
+        List<ProductDetailDto> GetCustomerDetails();
     }
 }

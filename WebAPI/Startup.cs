@@ -39,6 +39,7 @@ namespace WebAPI
 
             // Arka planda bir referans oluþtur ve ihtiyaca göre karþýlýðý verir. IOC. contructorda biri isterse gönder
             services.AddSingleton<ICustomerService, CustomerManager>();
+            services.AddSingleton<IProductService, ProductManager>();
             services.AddSingleton<ICustomerDal, EfCustomerDal>();
             services.AddSingleton<IOrderDal, EfOrderDal>();
             services.AddSingleton<IProductDal, EfProductDal>();

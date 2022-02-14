@@ -11,12 +11,8 @@ using Entities.Dtos;
 namespace Business.Abstract
 {
     // iş katmanında kullanılacağımız servis operasyonları
-    public interface ICustomerService
+    public interface IProductService
     {
-        // Soyut methotlar 
-
-        IResult Add(Customer customer);
-
-        IDataResult<List<Customer>> GetAll();
+        IDataResult<List<ProductDetailDto>> GetAllDetails();
     }
 }

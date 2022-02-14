@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.InMemory
             _customers.Remove(findCustomer);
         }
 
-        public List<CustomerDetailsDto> GetCustomerDetails()
+        public List<ProductDetailDto> GetCustomerDetails()
         {
             throw new NotImplementedException();
         }

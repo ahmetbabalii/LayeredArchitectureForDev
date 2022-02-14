@@ -13,6 +13,5 @@ namespace DataAccess.Abstract
     {
         // Ürüne ait özel operasyonları buraya ekliyoruz. 
         // Customer'a ait özel bir operasyon eklemiş olduk.
-        List<CustomerDetailsDto> GetCustomerDetails();
     }
 }
