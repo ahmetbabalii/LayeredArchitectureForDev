@@ -40,7 +40,9 @@ namespace WebAPI
             // Arka planda bir referans oluþtur ve ihtiyaca göre karþýlýðý verir. IOC. contructorda biri isterse gönder
             services.AddSingleton<ICustomerService, CustomerManager>();
             services.AddSingleton<ICustomerDal, EfCustomerDal>();
-
+            services.AddSingleton<IOrderDal, EfOrderDal>();
+            services.AddSingleton<IProductDal, EfProductDal>();
+            services.AddSingleton<ICategoryDal, EfCategoryDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

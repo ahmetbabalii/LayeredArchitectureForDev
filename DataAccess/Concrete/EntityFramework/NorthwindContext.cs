@@ -19,9 +19,9 @@ namespace DataAccess.Concrete.EntityFramework
 
         // DbSet ile birlikte veritabanında ki tablolar ile classları(entity'leri) eşleştirmiş oluyoruz.
         // örnek => public DbSet<EntityAdi> VeritabanındaKullanilanTabloAdi { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

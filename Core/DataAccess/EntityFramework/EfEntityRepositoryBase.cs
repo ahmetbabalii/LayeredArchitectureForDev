@@ -8,8 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Core.DataAccess.EntityFramework
 {
     /// <summary>
-    /// Repository Pattern'in implementasyonudur. CRUD operasyonlar için gerekli tüm toolkit burada implemente edilmiştir.
-    /// ayrıca lifetimescope autofac tarafından yönetildiğinden metodların içinde bulunan usingler kaldırılmıştır.
+    /// Tüm temel operasyonları desteklemesini beklediğimiz için IEntityRepository'i kalıtım olarak aldık.
     /// </summary>
     /// <typeparam name="TEntity">Tablo</typeparam>
     /// <typeparam name="TContext">Context</typeparam>
