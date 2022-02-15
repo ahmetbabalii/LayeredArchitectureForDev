@@ -1,10 +1,14 @@
 ﻿
 namespace Core.Utilities.Results
 {
-    // Temel voidler için başlangıç
+    // Temel bilgilendirme için kullanılan methodların imzaları
     public interface IResult
     {
-        bool Success { get; }
+        // İşlem sonucunun başarı durumunu gösterecek
+        bool Success { get; } // => set işlemleri sadece contructor içerisinden yapılabilir. 
+
+
+        // İşlem sonucunda kullanıcıya gösterilmek istenen mesaj
         string Message { get; }
     }
 }

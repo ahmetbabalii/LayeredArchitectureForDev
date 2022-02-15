@@ -3,12 +3,12 @@ namespace Core.Utilities.Results
 {
     public class ErrorResult : Result
     {
-        public ErrorResult(string message) : base(false, message)
-        {
-        }
+        // base keyword'ü ile beraber implemente edilen sınıfın İKİ parametreli contrcutor'ı çalışacaktır.
+        // İşlemin başarısız olduğunu default olarak göndermiş oluyoruz. (Mesaj ile birlikte)
+        public ErrorResult(string message) : base(false, message) { }
 
-        public ErrorResult() : base(false)
-        {
-        }
+        // base keyword'ü ile beraber implemente edilen sınıfın TEK parametreli contrcutor'ı çalışacaktır.
+        // İşlemin başarısız olduğunu default olarak göndermiş oluyoruz. 
+        public ErrorResult() : base(false) { }
     }
 }

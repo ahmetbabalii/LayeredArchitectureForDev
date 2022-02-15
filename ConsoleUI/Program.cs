@@ -1,8 +1,6 @@
 ﻿using System;
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
-using Entities.Concrete;
 
 namespace ConsoleUI
 {
@@ -11,21 +9,27 @@ namespace ConsoleUI
         
         static void Main(string[] args)
         {
-            CustomerTest();
-        }
+            /*
+                Manager'ı çağırdğımız noktada gevşek bağımlığı anlatacağımdan bahsetmiştim. 
+                Manager'ı kullanırken soyut bir nesne veya ona implemente edilen bir nesne bizden talep ediyordu.
+                Biz aşağıda ki örnekte EntityFrameWork ile db işlemlerini yürüttüğümüz somut nesneyi göndererek verilerimizi çekebildik.
+                
+                Peki bunun haricinde farklı olarak ne gönderebilirdik? Farklı bir ORM tulu olan Dapper'ı kullandığımızı düşünelim.
+                Projemize dapper ekleyip bunun erişimini tamamladıktan sonra DPProductDal gibi bir sınıf daha projeye kazandırdığımızda
+                bizi tek değiştirmemiz gereken nokta bu kısım olacaktır => new ProductManager(new EfProductDal());
+            */
 
-        // SOLİD
-        // Open Closed Principle => Yaptığınız yazılıma yeni bir özellik ekliyorsanız mevcutta
-        //                          ki hiçbir koda dokunamazsınız
-        private static void CustomerTest()
-        {
-            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal(new NorthwindContext()));
-            //foreach (var item in customerManager.GetAllDetails().Data)
-            //{
-            //    Console.WriteLine(item.Alan2 + item.Alan1);
-            //}
 
-            //Console.ReadLine();
+            // Dapper ile bir kullanım gerçekleştirmek isteseydik değiştirmemiz gereken tek kısım aşağıda yer alıyor.
+            // ProductManager productManager = new ProductManager(new DPProductDal());
+
+            ProductManager productManager = new ProductManager(new EfProductDal());
+            foreach (var item in productManager.GetAllProductDetails())
+            {
+                Console.WriteLine(item.ProductName);
+            }
+
+            Console.ReadLine();
         }
     }
 }

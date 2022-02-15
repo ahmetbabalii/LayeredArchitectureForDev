@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.Dtos;
@@ -13,6 +9,15 @@ namespace Business.Abstract
     // iş katmanında kullanılacağımız servis operasyonları
     public interface IProductService
     {
+        List<ProductDetailDto> GetAllProductDetails();
+
+
+        IResult Add(Product customer);
         IDataResult<List<ProductDetailDto>> GetAllDetails();
     }
 }
+
+
+
+
+

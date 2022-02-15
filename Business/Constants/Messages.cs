@@ -2,11 +2,9 @@
 
 namespace Business.Constants
 {
-    /// <summary>
-    /// This class was created to get rid of magic strings and write more readable code.
-    /// </summary>
     public static class Messages
     {
+        // Public ile belirlediğimiz parametrelerin isimlendirmesini büyük harfler başlatıyoruz. (Pascal Case)
         public static string Added => "Added";
         public static string Deleted => "Deleted";
         public static string Updated => "Updated";
