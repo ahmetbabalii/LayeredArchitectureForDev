@@ -1,3 +1,4 @@
+﻿using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +14,7 @@ namespace WebAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
+        public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
 
@@ -24,13 +24,17 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
-                       {
-                           c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
-                       });
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
+                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+            });
 
             services.AddControllers();
 
-            // Arka planda bir referans olu�tur ve ihtiyaca g�re kar��l��� verir. IOC. contructorda biri isterse g�nder
+            // Farklı IOC Container teknolojileri => Autofac, Ninject, CastleWindsor
+
+            // Arka planda bir referans oluştur ve ihtiyaca göre karşılığı verir. IOC container. contructorda biri isterse gönder
+            // Bu şu anlama gelir biri gelip ICustomerService ister ise ona CustomerManager nesnesini(new ()) oluştur ve geriye dön. Tüm bellekte ortak bir manager nesnesi tutmuş olacaktır.
             services.AddSingleton<ICustomerService, CustomerManager>();
             services.AddSingleton<IProductService, ProductManager>();
             services.AddSingleton<ICustomerDal, EfCustomerDal>();

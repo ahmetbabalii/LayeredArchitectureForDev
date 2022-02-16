@@ -35,13 +35,19 @@ namespace Business.Concrete
             return new List<ProductDetailDto>(_productDal.GetProductDetails());
         }
 
-        public IResult Add(Product customer)
-        {
-            if (string.IsNullOrEmpty(customer.ProductName))
-                return new Result(false ,"Ürünün ismin boş geçilemez"); 
 
-            _productDal.Add(customer);
+        public IResult Add(Product product)
+        {
+            if (string.IsNullOrEmpty(product.ProductName))
+                return new Result(false, "Ürünün ismin boş geçilemez");
+
+            _productDal.Add(product);
             return new SuccessResult(Messages.Added);
+        }
+
+        public IDataResult<Product> ProductDetails(int productId)
+        {
+            return new SuccessDataResult<Product>(_productDal.Get(x => x.ProductId == productId));
         }
 
         public IDataResult<List<ProductDetailDto>> GetAllDetails()

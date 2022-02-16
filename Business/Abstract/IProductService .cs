@@ -13,6 +13,7 @@ namespace Business.Abstract
 
 
         IResult Add(Product customer);
+        IDataResult<Product> ProductDetails(int productId);
         IDataResult<List<ProductDetailDto>> GetAllDetails();
     }
 }
